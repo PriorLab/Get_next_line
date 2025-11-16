@@ -10,10 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
 
-ssize_t read(int    fildes, void *buff, size_t nbyte)
+ssize_t read(int    fildes, void *box, size_t nbytes)
 {
+	size_t	i;
 
+	i = nbytes
+	box = malloc(BUFFER_SIZE + 1);
 }
 
 char    *openfile(int fd)
