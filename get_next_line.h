@@ -6,7 +6,7 @@
 /*   By: alemigue <alemigue@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 17:48:41 by alemigue          #+#    #+#             */
-/*   Updated: 2025/11/16 15:39:23 by alemigue         ###   ########.fr       */
+/*   Updated: 2025/11/23 16:53:15 by alemigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *s);
 void	*ft_memmove(void *dest, const void *src, size_t len);
 void	*ft_memcpy(void *dest, const void *src, size_t len);
+char	*extract_rest_gnl(char	*box);
+char    *extract_line_gnl(char *box);
 
 /*___________________________Structs__________________________________________*/
 typedef struct s_list
@@ -39,9 +41,5 @@ typedef struct s_list
 	char			*buf;
 	struct s_list	*next;
 }	t_list;
-
-
-
-
 
 # endif 

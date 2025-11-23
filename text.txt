@@ -1,7 +1,11 @@
-    O que faz a funcao get_next_line?
+O que faz a funcao get_next_line?
     Basicamente devolve uma linha de um file descriptor (fd), sempre que a funcao e chamada ela vai ler a linha aseguir e assim consequentemente.
     As funcoes permitidas sao read, malloc e free()
-    A funcao read (ssize_t read(int fildes, void *buf, size_t nbyte) 
+    A funcao read (ssize_t read(int file, void *box, size_t nbytes) [ler do ficheiro fd o numero de nbytes e guardar na box]
+
+    Tem tres condicoes >0 nr de bytes lidos =0 leu todo o ficheiro -1 deu erro
+    
+    Permite ler pedacos de um ficheiro em excertos de tamanho definido iterativamente (iter) e coloca-os numa caixa(box) para os poder utilizar. ate alcancar 
 tenta ler nbyte bytes ataves do objeto fildes referenciado pelo descriptor para o buffer apontado como buf
     Retorna o nbytes lidos caso consiga, se leu end of file EOF o ficheiro retorna 0, caso contrario e indicado error. 
 

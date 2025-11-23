@@ -6,55 +6,94 @@
 /*   By: alemigue <alemigue@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 17:48:37 by alemigue          #+#    #+#             */
-/*   Updated: 2025/11/16 14:42:39 by alemigue         ###   ########.fr       */
+/*   Updated: 2025/11/23 17:11:21 by alemigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-ssize_t read(int    fildes, void *box, size_t nbytes)
+char    *extract_line_gnl(char *box)
 {
-	size_t	i;
+	char    *line;
+	int     i;
+	int		j;
 
-	i = nbytes
-	box = malloc(BUFFER_SIZE + 1);
-}
-
-char    *openfile(int fd)
-{
-    int open;
-    
-    open = open(fd, O_RDONLY | O_CREATE);
-    RETURN 0;
-}
-//___________________________________________________________________________//
-//_____________Creates a string from the original with len size______________//
-//___________________________________________________________________________//
-char	*ft_substr(const char *s, unsigned int start, size_t len)
-{
-	size_t	slen;
-	size_t	i;
-	char	*final;
-
-	if (!s)
-		return (NULL);
-	slen = ft_strlen(s);
-	if (start >= slen)
-		return (ft_strdup(""));
-	if (start + len > slen)
-		len = slen - start;
-	final = malloc(len + 1);
-	if (!final)
+	if (!box || box[0] == '\0')
 		return (NULL);
 	i = 0;
-	while (i < len && s[start + i])
+	while (box[i] && box[i] != '\n')
+		i++;
+	if (box[i] == '\n')
+		i++;
+	line = malloc(i + 1);
+	if (!line)
+		return (NULL);
+	j = 0;
+        while(j < i)
+        {
+            line[j] = box[j];
+            j++;
+        }
+    line[i] = '\0';
+	return (line);
+}
+char	*extract_rest_gnl(char	*box)
+{
+	char    *rest;
+	int     i;
+	int		j;
+	int		len;
+
+	if (!box)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while(box[i] && box[i] != '\n')
+		i++;
+	if (!box[i])
+		return(free(box), NULL);
+	i++;
+	if (!box[i])
+		return(free(box), NULL);
+	len = ft_strlen(box+i);
+	rest = malloc(len + 1);
+	if (!rest)
+		return(NULL);
+	while(box[i])
 	{
-		final[i] = s[i + start];
+		rest[j] = box[i];
+		j++;
 		i++;
 	}
-	final[i] = '\0';
-	return (final);
+	rest[j] = '\0';
+	return (free(box), rest);
 }
+// char	*extract_line_gnlv2(char	*box)
+// {
+// 	int		i;
+// 	int		j;
+// 	char*	line;
+
+// 	i = 0;
+// 	j = 0;
+// 	if (!box || box[0] == '\0')
+// 		return (NULL);
+// 	while (box[i] && box[i] == '\n')
+// 		i++;
+// 	if (box[i] == '\n')
+// 		i++;
+// 	line = malloc(i + 1);
+// 	if (!line)
+// 		return(NULL);
+// 	while (j < i);
+// 	{
+// 		line[j] = box[j];
+// 		j++;
+// 	}
+// 	line[j] = '\0';
+// 	return(line);
+// }
+
 //___________________________________________________________________________//
 //_____________________________Unify two string______________________________//
 //___________________________________________________________________________//
@@ -87,6 +126,23 @@ char	*ft_strjoin(char const *s1, char const *s2)
 //___________________________________________________________________________//
 //_________________searches for an occurrence in a string____________________//
 //___________________________________________________________________________//
+// int	ft_strchr_gnl(const char *s, int c)
+// {
+// 	size_t	i;
+
+// 	i = 0;
+// 	while (s[i])
+// 	{
+// 		if (s[i] == (char)c)
+// 			return (1);
+// 		i++;
+// 	}
+// 	if ((char)c == '\0')
+// 		return (0);
+// 	return (NULL);
+// }
+
+
 char	*ft_strchr(const char *s, int c)
 {
 	size_t	i;
@@ -115,33 +171,4 @@ size_t	ft_strlen(const char *s)
 		i++;
 	}
 	return (i);
-}
-//___________________________________________________________________________//
-//_____________allocates n memory bytes from source to dest__________________//
-//___________________________________________________________________________//
-void	*ft_memmove(void *dest, const void *src, size_t len)
-{
-	unsigned char		*tmp_dest;
-	const unsigned char	*tmp_src;
-	size_t				i;
-
-	tmp_dest = (unsigned char *) dest;
-	tmp_src = (const unsigned char *) src;
-	i = 0;
-	if (dest == NULL && !src)
-		return (NULL);
-	if (tmp_dest > tmp_src)
-	{
-		while (len-- > 0)
-			tmp_dest[len] = tmp_src[len];
-	}
-	else
-	{
-		while (i < len)
-		{
-			tmp_dest[i] = tmp_src[i];
-			i++;
-		}
-	}
-	return (dest);
 }
