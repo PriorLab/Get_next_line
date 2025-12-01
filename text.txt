@@ -1,11 +1,14 @@
-O que faz a funcao get_next_line?
-    Basicamente devolve uma linha de um file descriptor (fd), sempre que a funcao e chamada ela vai ler a linha aseguir e assim consequentemente.
-    As funcoes permitidas sao read, malloc e free()
-    A funcao read (ssize_t read(int file, void *box, size_t nbytes) [ler do ficheiro fd o numero de nbytes e guardar na box]
-
-    Tem tres condicoes >0 nr de bytes lidos =0 leu todo o ficheiro -1 deu erro
-    
-    Permite ler pedacos de um ficheiro em excertos de tamanho definido iterativamente (iter) e coloca-os numa caixa(box) para os poder utilizar. ate alcancar 
-tenta ler nbyte bytes ataves do objeto fildes referenciado pelo descriptor para o buffer apontado como buf
-    Retorna o nbytes lidos caso consiga, se leu end of file EOF o ficheiro retorna 0, caso contrario e indicado error. 
-
+The future is already here—it’s just not evenly distributed.
+If you don't have a plan to interrupt your interruptions your plans will always be interrupted. Period. - Peter Voogd.
+Envy of other people shows how they are unhappy. Their continual attention to others behavior shows how they are boring. - Seneca
+If you pick someone, you're really safe. If they pick you, you have to be careful.
+Be yourself; everyone else is already taken.
+Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.
+“A room without books is like a body without a soul.”
+― Marcus Tullius Cicero
+“Be who you are and say what you feel, because those who mind don't matter, and those who matter don't mind.”
+― Bernard M. Baruch
+“You know you're in love when you can't fall asleep because reality is finally better than your dreams.”
+― Dr. Seuss
+“You only live once, but if you do it right, once is enough.”
+― Mae West
